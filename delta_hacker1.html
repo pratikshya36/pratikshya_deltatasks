@@ -10,7 +10,7 @@
 	.tab-1 th {background-color:lightgreen;text-align:center;}
 	.tab-1 tr {background-color:white;}
 	.tab-2{margin-left:50%;}
-	.tab-2 input{display:block;margin-bottom:10%;}
+	.tab-2 input{display:block;margin-bottom:2%;}
 	tr:hover{background-color:#EEE; cursor:pointer}
 	#instructions
 	{
@@ -85,7 +85,7 @@
 		cell2.innerHTML=myvenue;
 		cell3.innerHTML=mytime;selectedRowToInput();
 	}
-	tr.setAttribute("id", "new_row", 0);
+	tr.setAttribute("id", "new_row");
 	function selectedRowToInput()
 	{
 		for (var i=1;i<table.rows.length;i++)
@@ -115,16 +115,16 @@
 		document.getElementById("myvenue").value=" ";
 		document.getElementById("mytime").value=" ";
 	}
-	var x=document.getElementById("mycolour");
+	var x=document.getElementById("mycolour").value;
 	var c=x.localeCompare("red");
 	if (c==0)
-	document.getElementById("new_row").style.bgColor="red";
+	document.getElementById("new_row").style.backgroundColor="red";
 	var c=x.localeCompare("green");
 	if (c==0)
-	document.getElementById("new_row").style.bgColor="green";
+	document.getElementById("new_row").style.backgroundColor="green";
 	var c=x.localeCompare("yellow");
 	if (c==0)
-	document.getElementById("new_row").style.bgColor="yellow";
+	document.getElementById("new_row").style.backgroundColor="yellow";
 </script>
 </body>
 </html>
