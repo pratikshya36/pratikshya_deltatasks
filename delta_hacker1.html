@@ -83,9 +83,21 @@
 		mytime=document.getElementById("mytime").value;
 		cell1.innerHTML=mydate;
 		cell2.innerHTML=myvenue;
-		cell3.innerHTML=mytime;selectedRowToInput();
+		cell3.innerHTML=mytime;
+		tr.setAttribute("id","new_row");
+		var x=document.getElementById("mycolour").value;
+		var c=x.localeCompare("red");
+		if (c==0)
+		document.getElementById("new_row").style.backgroundColor="red";
+		var c=x.localeCompare("green");
+		if (c==0)
+		document.getElementById("new_row").style.backgroundColor="green";
+		var c=x.localeCompare("yellow");
+		if (c==0)
+		document.getElementById("new_row").style.backgroundColor="yellow";
+		selectedRowToInput();
 	}
-	tr.setAttribute("id", "new_row");
+	
 	function selectedRowToInput()
 	{
 		for (var i=1;i<table.rows.length;i++)
@@ -115,16 +127,7 @@
 		document.getElementById("myvenue").value=" ";
 		document.getElementById("mytime").value=" ";
 	}
-	var x=document.getElementById("mycolour").value;
-	var c=x.localeCompare("red");
-	if (c==0)
-	document.getElementById("new_row").style.backgroundColor="red";
-	var c=x.localeCompare("green");
-	if (c==0)
-	document.getElementById("new_row").style.backgroundColor="green";
-	var c=x.localeCompare("yellow");
-	if (c==0)
-	document.getElementById("new_row").style.backgroundColor="yellow";
+
 </script>
 </body>
 </html>
