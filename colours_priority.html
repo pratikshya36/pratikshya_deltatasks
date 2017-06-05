@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>CONFERENCE SCHEDULE
+	</title>
+</head>
+<style>
+	body{background-color:lightblue;}
+	.container{overflow: hidden}
+	.tab{float: left;margin-left:30%;}
+	.tab-1 th {background-color:lightgreen;text-align:center;}
+	.tab-1 tr {background-color:white;}
+	.tab-2{margin-left:50%;}
+	.tab-2 input{display:block;margin-bottom:2%;}
+	tr:hover{background-color:#EEE; cursor:pointer}
+	#instructions
+	{
+	   position:fixed; 
+       margin-bottom:10%;margin-left:4.5%;   
+       text-align: center;    
+       bottom: 0%; 
+       width: 100%;text-align:left;
+   } 
+   #instructions1
+	{
+	   position:fixed; 
+	   margin-top:5%;
+       margin-bottom:5%;	   
+       text-align: center;margin-left:3%;   
+       bottom:0%; 
+       width: 100%;text-align:left;
+	}
+	#btn
+	{
+	text-align:center;background-color:red;color:white;border-radius:10%;cursor:pointer;padding:3% 3%;
+	}
+</style>
+<body>
+	<h1> <center>JOE HACKER'S SCHEDULE</center></h1>
+	<div class="container">
+	<div class="tab tab-1">
+	<table id="table" border="5%" width="105%">
+	<tr>
+		<th>DATE</th>
+		<th>VENUE</th>
+		<th>TIME</th>
+	</tr>
+	</table>
+	</div>
+	<div class="tab tab-2" border="5%">
+		DATE:<input type="date" name="mydate" id="mydate">
+		VENUE:<input type="text" name="myvenue" id="myvenue">
+		TIME:<input type="time" name="mytime" id="mytime">
+		PRIORITY COLOUR<input type="text" name="colour" id="mycolour">
+	<p>Please enter colour according to order of priority
+		1.red:highest
+		2:green:medium
+		3:yellow:least
+	</p>
+	<button id="btn" onclick="addRow();">ADD</button>
+	<button id="btn" onclick="edit();">EDIT</button>
+	<button id="btn" onclick="remove();">REMOVE</button>
+	</div>
+	</div>
+	<p id="instructions"><strong>SOME INSTRUCTIONS</strong></p>
+	<ul id ="instructions1">
+		<li>ENTER THE DATA IN THE RESPECTIVE FIELDS AND THEN CLICK "ADD" TO ADD THE ROW TO THE TABLE</li>
+		<li>SELECT THE RESPECTIVE ROW AND EDIT ANY FIELD AND THEN CLICK "EDIT" TO EDIT THE ROW</li>
+		<li>SELECT THE RESPECTIVE ROW AND THEN CLICK "REMOVE" TO DELETE THE ROW</li>
+	</ul>
+<script>
+	var rIndex, table=document.getElementById("table");var k=1;var l=1;
+	function addRow()
+	{
+		var x1=document.getElementById("table");
+		newRow=table.insertRow(x1.length);
+		cell1=newRow.insertCell(0);
+		cell2=newRow.insertCell(1);
+		cell3=newRow.insertCell(2);
+		mydate=document.getElementById("mydate").value;
+		myvenue=document.getElementById("myvenue").value;
+		mytime=document.getElementById("mytime").value;
+		cell1.innerHTML=mydate;
+		cell2.innerHTML=myvenue;
+		cell3.innerHTML=mytime;
+		var s="new_row"+k.toString();
+		newRow.id=s;
+		k=k+1;
+		var x=document.getElementById("mycolour").value;
+		var c=x.localeCompare("red");
+		if (c==0)
+		document.getElementById(s).style.backgroundColor="red";
+		var c=x.localeCompare("green");
+		if (c==0)
+		document.getElementById(s).style.backgroundColor="green";
+		var c=x.localeCompare("yellow");
+		if (c==0)
+		document.getElementById(s).style.backgroundColor="yellow";
+		selectedRowToInput();
+	}
+	
+	function selectedRowToInput()
+	{
+		for (var i=1;i<table.rows.length;i++)
+		{
+		table.rows[i].onclick=function()
+		{
+			rIndex=this.rowIndex;
+			document.getElementById("mydate").value=this.cells[0].innerHTML;
+			document.getElementById("myvenue").value=this.cells[1].innerHTML;
+			document.getElementById("mytime").value=this.cells[2].innerHTML;
+		};
+		}
+	}selectedRowToInput();
+	function edit()
+	{
+		var mydate=document.getElementById("mydate").value;
+		var myvenue=document.getElementById("myvenue").value;
+		var mytime=document.getElementById("mytime").value;
+		table.rows[rIndex].cells[0].innerHTML=mydate;
+		table.rows[rIndex].cells[1].innerHTML=myvenue;
+		table.rows[rIndex].cells[2].innerHTML=mytime;var z="edit_row"+l.toString();
+		table.rows[rIndex].id=z;l=l+1;
+		var x=document.getElementById("mycolour").value;
+		var c=x.localeCompare("red");
+		if (c==0)
+		document.getElementById(z).style.backgroundColor="red";
+		var c=x.localeCompare("green");
+		if (c==0)
+		document.getElementById(z).style.backgroundColor="green";
+		var c=x.localeCompare("yellow");
+		if (c==0)
+		document.getElementById(z).style.backgroundColor="yellow";
+	}
+	function remove()
+	{
+		document.getElementById("table").deleteRow(1);
+		document.getElementById("mydate").value=" ";
+		document.getElementById("myvenue").value=" ";
+		document.getElementById("mytime").value=" ";
+	}
+
+</script>
+</body>
+</html>
