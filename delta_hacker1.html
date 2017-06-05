@@ -66,8 +66,6 @@
 		<li>ENTER THE DATA IN THE RESPECTIVE FIELDS AND THEN CLICK "ADD" TO ADD THE ROW TO THE TABLE</li>
 		<li>SELECT THE RESPECTIVE ROW AND EDIT ANY FIELD AND THEN CLICK "EDIT" TO EDIT THE ROW</li>
 		<li>SELECT THE RESPECTIVE ROW AND THEN CLICK "REMOVE" TO DELETE THE ROW</li>
-	
-		
 	</ul>
 <script>
 	var rIndex, table=document.getElementById("table");
@@ -84,7 +82,7 @@
 		cell1.innerHTML=mydate;
 		cell2.innerHTML=myvenue;
 		cell3.innerHTML=mytime;
-		tr.setAttribute("id","new_row");
+		newRow.id="new_row";
 		var x=document.getElementById("mycolour").value;
 		var c=x.localeCompare("red");
 		if (c==0)
@@ -119,6 +117,17 @@
 		table.rows[rIndex].cells[0].innerHTML=mydate;
 		table.rows[rIndex].cells[1].innerHTML=myvenue;
 		table.rows[rIndex].cells[2].innerHTML=mytime;
+		table.rows[rIndex].id="edit_row";
+		var x=document.getElementById("mycolour").value;
+		var c=x.localeCompare("red");
+		if (c==0)
+		document.getElementById("edit_row").style.backgroundColor="red";
+		var c=x.localeCompare("green");
+		if (c==0)
+		document.getElementById("edit_row").style.backgroundColor="green";
+		var c=x.localeCompare("yellow");
+		if (c==0)
+		document.getElementById("edit_row").style.backgroundColor="yellow";
 	}
 	function remove()
 	{
